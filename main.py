@@ -29,9 +29,16 @@ def traverse():
     mini=sys.float_info.max
     threshold=0.5
     for i in range(0,h1-n1):
-        mini = min(mini,ssd(arr1,arr2,i,0))
+        val = ssd(arr1,arr2,i,0)
+        if val < mini:
+            arr.append((i,0))
+            mini = min(mini,val)
+        
         for j in range(0,h2-n2):
-            mini = min(mini, helper(0,n2-1,j,j+n2))        
+            val = val + helper(0,n2-1,j,j+n2)
+            if val < mini:
+                arr.append((i,j))
+                mini = min(mini,val)
 
     # for i in range(0,h1-n1):
     #     for j in range(0,h2-n2):

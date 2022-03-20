@@ -1,6 +1,8 @@
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 import cv2
+import sys
+
 global arr1, arr2, n1, n2,h1,h2, arr
 
 def ssd(arr1,arr2,l,b):
@@ -18,11 +20,12 @@ def ssd(arr1,arr2,l,b):
     return sumr+sumg+sumb
 
 def traverse():
-    mini=4294967295
+    mini=sys.float_info.max
     threshold=0.5
     for i in range(0,h2-n2):
         for j in range(0,h1-n1):
             mini=min(mini,ssd(arr1,arr2,i,j))
+            print(mini)
     print(mini)
 
     for i in range(0,h2-n2):

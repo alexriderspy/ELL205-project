@@ -39,7 +39,7 @@ def traverse():
             if val < mini:
                 arr.append((i,j))
                 mini = min(mini,val)
-
+    print(mini)
     # for i in range(0,h1-n1):
     #     for j in range(0,h2-n2):
     #         if ssd(arr1,arr2,i,j)<=mini+threshold:
@@ -55,12 +55,13 @@ h2 = arr2.shape[1]
 print(n1,n2,h1,h2)
 traverse()
 
+arr.sort()
 imagetest = plt.imread('test.jpeg')
 fig = plt.figure()
 
 ax = fig.add_axes([0, 0, 1, 1])
 
-for i in range(0,len(arr)):
+for i in range(0,1):
     x,y=arr[i]
     rect = patches.Rectangle((x, y), n1, n2, edgecolor='green', facecolor='none', linewidth=2)
     ax.add_patch(rect)

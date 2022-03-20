@@ -19,17 +19,22 @@ def ssd(arr1,arr2,l,b):
             sumb = sumb + (float(arr1[i][j][2]) - float(arr2[l+i][b+j][2]))**2
     return sumr+sumg+sumb
 
+def helper(col1_template,col2_template,col1_test,col2_test):
+    val = 0.0
+    for i in range(0,n1):
+        val = val - ((float(arr1[i][col1_template][0]) - float(arr2[i][col1_test][0]))**2 + (float(arr1[i][col1_template][1]) - float(arr2[i][col1_test][1]))**2 + (float(arr1[i][col1_template][2]) - float(arr2[i][col1_test][2]))**2) + ((float(arr1[i][col2_template][0]) - float(arr2[i][col2_test][0]))**2 + (float(arr1[i][col2_template][1]) - float(arr2[i][col2_test][1]))**2 + (float(arr1[i][col2_template][2]) - float(arr2[i][col2_test][2]))**2)
+    return val
+
 def traverse():
     mini=sys.float_info.max
     threshold=0.5
-    for i in range(0,h2-n2):
-        for j in range(0,h1-n1):
-            mini=min(mini,ssd(arr1,arr2,i,j))
-            print(mini)
-    print(mini)
+    for i in range(0,h1-n1):
+        mini = min(mini,ssd(arr1,arr2,i,0))
+        for j in range(0,h2-n2):
+            mini = min(mini, helper(0,n2-1,j,j+n2))        
 
-    for i in range(0,h2-n2):
-        for j in range(0,h1-n1):
+    for i in range(0,h1-n1):
+        for j in range(0,h2-n2):
             if ssd(arr1,arr2,i,j)<=mini+threshold:
                 arr.append((i,j))
                 

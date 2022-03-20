@@ -38,8 +38,8 @@ def traverse():
             if ssd(arr1,arr2,i,j)<=mini+threshold:
                 arr.append((i,j))
                 
-arr1 = cv2.imread("template.jpg", cv2.IMREAD_COLOR)
-arr2 = cv2.imread("test.jpg", cv2.IMREAD_COLOR)
+arr1 = cv2.imread("template.jpeg", cv2.IMREAD_COLOR)
+arr2 = cv2.imread("test.jpeg", cv2.IMREAD_COLOR)
 arr=[]
 n1 = arr1.shape[0]
 n2 = arr1.shape[1]
@@ -48,7 +48,7 @@ h2 = arr2.shape[1]
 print(n1,n2,h1,h2)
 traverse()
 
-imagetest = plt.imread('test.jpg')
+imagetest = plt.imread('test.jpeg')
 fig = plt.figure()
 
 ax = fig.add_axes([0, 0, 1, 1])

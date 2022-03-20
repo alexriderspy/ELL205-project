@@ -33,10 +33,10 @@ def traverse():
         for j in range(0,h2-n2):
             mini = min(mini, helper(0,n2-1,j,j+n2))        
 
-    for i in range(0,h1-n1):
-        for j in range(0,h2-n2):
-            if ssd(arr1,arr2,i,j)<=mini+threshold:
-                arr.append((i,j))
+    # for i in range(0,h1-n1):
+    #     for j in range(0,h2-n2):
+    #         if ssd(arr1,arr2,i,j)<=mini+threshold:
+    #             arr.append((i,j))
                 
 arr1 = cv2.imread("template.jpeg", cv2.IMREAD_COLOR)
 arr2 = cv2.imread("test.jpeg", cv2.IMREAD_COLOR)

@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
+from PIL import Image
 import cv2
 import sys
 
@@ -40,10 +41,6 @@ def traverse():
                 arr.append((i,j))
                 mini = min(mini,val)
     print(mini)
-    # for i in range(0,h1-n1):
-    #     for j in range(0,h2-n2):
-    #         if ssd(arr1,arr2,i,j)<=mini+threshold:
-    #             arr.append((i,j))
                 
 arr1 = cv2.imread("template.jpeg", cv2.IMREAD_COLOR)
 arr2 = cv2.imread("test.jpeg", cv2.IMREAD_COLOR)
@@ -55,15 +52,14 @@ h2 = arr2.shape[1]
 print(n1,n2,h1,h2)
 traverse()
 
-arr.sort()
-imagetest = plt.imread('test.jpeg')
-fig = plt.figure()
+arr.reverse()
 
-ax = fig.add_axes([0, 0, 1, 1])
+plt.imshow(Image.open('test.jpeg'))
 
-for i in range(0,1):
-    x,y=arr[i]
-    rect = patches.Rectangle((x, y), n1, n2, edgecolor='green', facecolor='none', linewidth=2)
-    ax.add_patch(rect)
-    
+print(arr[0])
+
+plt.gca().add_patch(patches.Rectangle((arr[0][0],arr[0][1]),n1,n2,
+                    edgecolor='blue',
+                    facecolor='none',
+                    lw=4))
 plt.show()

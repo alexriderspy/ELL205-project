@@ -28,7 +28,7 @@ def helper(col1_template,col2_template,col1_test,col2_test):
 
 def traverse():
     mini=sys.float_info.max
-    threshold=0.5
+    #threshold=0.5
     for i in range(0,h1-n1):
         val = ssd(arr1,arr2,i,0)
         if val < mini:

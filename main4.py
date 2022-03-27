@@ -16,10 +16,10 @@ def helper(arr1,arr2,col1_template,col2_template,col1_test,col2_test):
     return val
 
 def traverse(arr1,arr2,arr,h1,n1,h2,n2):
-    for i in range(0,h1-n1):
+    for i in range(0,h1-n1+1):
         val = ssd(arr1,arr2,n1,n2,i,0)
         arr.append((val,i,0))
-        for j in range(0,h2-n2):
+        for j in range(0,h2-n2+1):
             val = val + helper(arr1,arr2,0,n2-1,j,j+n2)
             arr.append((val,i,j))
     return arr
@@ -56,10 +56,15 @@ arr.sort()
 #     cv2.rectangle(img_rgb,pt,(pt[0] + w,pt[1]+h),(0,0,255),2)
 #min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
 
-top_left = (arr[0][1],arr[0][2])
-bottom_right = (top_left[0] + n2, top_left[1] + n1)
-cv2.rectangle(img_rgb,top_left,bottom_right,255,2)
+mini = arr[0][0]
 
+for i in range(0,len(arr)):
+    if arr[i][0] <= (2*mini):
+        top_left = (arr[i][2],arr[i][1])
+        bottom_right = (top_left[0] + n2, top_left[1] + n1)
+        cv2.rectangle(img_rgb,top_left,bottom_right,255,2)
+    else:
+        break
 #cv2.imshow('Matched image',img_rgb)
 cv2.imshow('Matched image',img_rgb)
 cv2.waitKey()

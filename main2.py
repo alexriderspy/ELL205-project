@@ -2,9 +2,9 @@ import cv2
 import numpy as np
 from matplotlib import pyplot as plt
 
-img_rgb = cv2.imread('test.png')
+img_rgb = cv2.imread('t.jpeg')
 img_gray = cv2.cvtColor(img_rgb,cv2.COLOR_BGR2GRAY)
-template = cv2.imread('template.png',0)
+template = cv2.imread('tem.jpeg',0)
 
 h,w = template.shape[::]
 

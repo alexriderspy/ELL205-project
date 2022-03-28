@@ -14,9 +14,9 @@ def normal(arr1,arr2,arr,h1,n1,h2,n2):
             arr.append((val,i,j))
     return arr
 
-img_rgb = cv2.imread('test.jpeg')
+img_rgb = cv2.imread('test1.png')
 img_gray = cv2.cvtColor(img_rgb,cv2.COLOR_BGR2GRAY)
-template = cv2.imread('temp.jpeg',0)
+template = cv2.imread('template1.png',0)
 
 # img_gray = cv2.norm(img_gray)
 # template = cv2.norm(img_gray)

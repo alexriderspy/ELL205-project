@@ -17,6 +17,7 @@ plt.imshow(res,cmap='gray')
 
 # for pt in zip (*loc[::-1]):
 #     cv2.rectangle(img_rgb,pt,(pt[0] + w,pt[1]+h),(0,0,255),2)
+
 min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
 
 top_left = min_loc

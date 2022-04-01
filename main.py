@@ -1,4 +1,5 @@
 import cv2
+import sys
 
 def ssd(arr1,arr2,n1,n2,l,b):
     sum = 0.0
@@ -14,15 +15,15 @@ def traverse(arr1,arr2,arr,h1,n1,h2,n2):
             arr.append((val,i,j))
     return arr
 
-img_rgb = cv2.imread('demo/test4.png')
+img_rgb = cv2.imread('demo/test.png')
 img_gray = cv2.cvtColor(img_rgb,cv2.COLOR_BGR2GRAY)
-template = cv2.imread('demo/template4.png',0)
+template = cv2.imread('demo/template.png',0)
 
-arr50=[]
-arr25 = []
-arr=[]
-arr200=[]
-arr400=[]
+arr50=[(sys.float_info.max,0,0)]
+arr25 = [(sys.float_info.max,0,0)]
+arr=[(sys.float_info.max,0,0)]
+arr200=[(sys.float_info.max,0,0)]
+arr400=[(sys.float_info.max,0,0)]
 
 h1,h2 = img_gray.shape[::]
 n1,n2 = template.shape[::]
@@ -49,7 +50,7 @@ arr25.sort()
 arr200 = traverse(template,img_gray200,arr200,h1*2,n1,h2*2,n2)
 arr200.sort()
 
-arr400 = traverse(template,img_gray400,arr400,h5//2,n1,h6//2,n2)
+arr400 = traverse(template,img_gray400,arr400,h5*2,n1,h6*2,n2)
 arr400.sort()
 
 arr = traverse(template,img_gray,arr,h1,n1,h2,n2)
@@ -57,11 +58,14 @@ arr.sort()
 
 mini = min(arr[0][0],min(arr50[0][0],min(arr200[0][0],min(arr400[0][0],arr25[0][0]))))
 
+count = 0
+
 for i in range(0,len(arr)):
     if arr[i][0] <= (1.2*mini):
         top_left = (arr[i][2],arr[i][1])
         bottom_right = (top_left[0] + n2, top_left[1] + n1)
         cv2.rectangle(img_rgb,top_left,bottom_right,255,2)
+        count = count + 1
     else:
         break
 
@@ -70,6 +74,7 @@ for i in range(0,len(arr25)):
         top_left = (arr25[i][2]*4,arr25[i][1]*4)
         bottom_right = ((top_left[0] + n2*4), (top_left[1] + n1*4))
         cv2.rectangle(img_rgb,top_left,bottom_right,255,2)
+        count = count + 1
     else:
         break
 
@@ -78,6 +83,7 @@ for i in range(0,len(arr50)):
         top_left = (arr50[i][2]*2,arr50[i][1]*2)
         bottom_right = ((top_left[0] + n2*2), (top_left[1] + n1*2))
         cv2.rectangle(img_rgb,top_left,bottom_right,255,2)
+        count = count + 1
     else:
         break
 
@@ -86,6 +92,7 @@ for i in range(0,len(arr200)):
         top_left = (arr200[i][2]//2,arr200[i][1]//2)
         bottom_right = ((top_left[0] + n2//2), (top_left[1] + n1//2))
         cv2.rectangle(img_rgb,top_left,bottom_right,255,2)
+        count = count + 1
     else:
         break
 
@@ -94,9 +101,11 @@ for i in range(0,len(arr400)):
         top_left = (arr400[i][2]*4,arr400[i][1]*4)
         bottom_right = ((top_left[0] + n2*4), (top_left[1] + n1*4))
         cv2.rectangle(img_rgb,top_left,bottom_right,255,2)
+        count = count + 1
     else:
         break
 
+print(count)
 cv2.imshow('Matched image',img_rgb)
 cv2.waitKey()
 cv2.destroyAllWindows()

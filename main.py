@@ -16,9 +16,9 @@ def traverse(arr1,arr2,arr,h1,n1,h2,n2):
     return arr
 
 #1,2,3
-img_rgb = cv2.imread('demo/test3.png')
+img_rgb = cv2.imread('images/test3.png')
 img_gray = cv2.cvtColor(img_rgb,cv2.COLOR_BGR2GRAY)
-template = cv2.imread('demo/template3.png',0)
+template = cv2.imread('images/template3.png',0)
 
 arr=[(sys.float_info.max,0,0)]
 
@@ -30,18 +30,14 @@ arr.sort()
 
 mini = arr[0][0]
 
-count = 0
-
 for i in range(0,len(arr)):
     if arr[i][0] <= (1.2*mini):
         top_left = (arr[i][2],arr[i][1])
         bottom_right = (top_left[0] + n2, top_left[1] + n1)
-        cv2.rectangle(img_rgb,top_left,bottom_right,255,2)
-        count = count + 1
+        cv2.rectangle(img_rgb,top_left,bottom_right,(255,0,0),2)
     else:
         break
 
-print(count)
 cv2.imshow('Matched image',img_rgb)
 cv2.waitKey()
 cv2.destroyAllWindows()

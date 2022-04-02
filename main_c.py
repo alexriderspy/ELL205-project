@@ -15,9 +15,9 @@ def traverse(arr1,arr2,arr,h1,n1,h2,n2):
             arr.append((val,i,j))
     return arr
 
-img_rgb = cv2.imread('demo/test4.png')
+img_rgb = cv2.imread('images/test4.png')
 img_gray = cv2.cvtColor(img_rgb,cv2.COLOR_BGR2GRAY)
-template = cv2.imread('demo/template4.png',0)
+template = cv2.imread('images/template4.png',0)
 
 arr50=[(sys.float_info.max,0,0)]
 arr25 = [(sys.float_info.max,0,0)]
@@ -62,7 +62,7 @@ for i in range(0,len(arr)):
     if arr[i][0] <= (1.2*mini):
         top_left = (arr[i][2],arr[i][1])
         bottom_right = (top_left[0] + n2, top_left[1] + n1)
-        cv2.rectangle(img_rgb,top_left,bottom_right,255,2)
+        cv2.rectangle(img_rgb,top_left,bottom_right,(255,0,0),2)
     else:
         break
 
@@ -70,7 +70,7 @@ for i in range(0,len(arr25)):
     if arr25[i][0] <= (1.2*mini):
         top_left = (arr25[i][2]*4,arr25[i][1]*4)
         bottom_right = ((top_left[0] + n2*4), (top_left[1] + n1*4))
-        cv2.rectangle(img_rgb,top_left,bottom_right,255,2)
+        cv2.rectangle(img_rgb,top_left,bottom_right,(255,0,0),2)
     else:
         break
 
@@ -78,7 +78,7 @@ for i in range(0,len(arr50)):
     if arr50[i][0] <= (1.2*mini):
         top_left = (arr50[i][2]*2,arr50[i][1]*2)
         bottom_right = ((top_left[0] + n2*2), (top_left[1] + n1*2))
-        cv2.rectangle(img_rgb,top_left,bottom_right,255,2)
+        cv2.rectangle(img_rgb,top_left,bottom_right,(255,0,0),2)
     else:
         break
 
@@ -86,7 +86,7 @@ for i in range(0,len(arr200)):
     if arr200[i][0] <= (1.2*mini):
         top_left = (arr200[i][2]//2,arr200[i][1]//2)
         bottom_right = ((top_left[0] + n2//2), (top_left[1] + n1//2))
-        cv2.rectangle(img_rgb,top_left,bottom_right,255,2)
+        cv2.rectangle(img_rgb,top_left,bottom_right,(255,0,0),2)
     else:
         break
 
@@ -94,7 +94,7 @@ for i in range(0,len(arr400)):
     if arr400[i][0] <= (1.2*mini):
         top_left = (arr400[i][2]*4,arr400[i][1]*4)
         bottom_right = ((top_left[0] + n2*4), (top_left[1] + n1*4))
-        cv2.rectangle(img_rgb,top_left,bottom_right,255,2)
+        cv2.rectangle(img_rgb,top_left,bottom_right,(255,0,0),2)
     else:
         break
 

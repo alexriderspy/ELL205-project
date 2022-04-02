@@ -16,9 +16,9 @@ def traverse(arr1,arr2,arr,h1,n1,h2,n2):
     return arr
 
 #1,2,3
-img_rgb = cv2.imread('images/test3.png')
+img_rgb = cv2.imread('images/test1.png')
 img_gray = cv2.cvtColor(img_rgb,cv2.COLOR_BGR2GRAY)
-template = cv2.imread('images/template3.png',0)
+template = cv2.imread('images/template1.png',0)
 
 arr=[(sys.float_info.max,0,0)]
 
